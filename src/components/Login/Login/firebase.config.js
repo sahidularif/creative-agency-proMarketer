@@ -1,9 +1,9 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyDwL7HCCc4QJg01JoXGKIUxNmm1W7JwTss",
-  authDomain: "pro-marketer.firebaseapp.com",
-  projectId: "pro-marketer",
-  storageBucket: "pro-marketer.appspot.com",
-  messagingSenderId: "156696839705",
-  appId: "1:156696839705:web:0f281b085bbfdf854e4c88"
+  apiKey: "AIzaSyC5ffixTgMf7bnxiiLZKlT3DTVdJMbspeE",
+  authDomain: "pro-marketer-5f932.firebaseapp.com",
+  projectId: "pro-marketer-5f932",
+  storageBucket: "pro-marketer-5f932.appspot.com",
+  messagingSenderId: "889040449127",
+  appId: "1:889040449127:web:1fefa39b438d33ef4eeec2"
 };
   export default firebaseConfig;
