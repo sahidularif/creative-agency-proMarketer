@@ -1,0 +1,11 @@
+.status-btn:hover {
+  cursor: context-menu !important;
+}
+.booking-body .card {
+    border: none;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    background-color: snow;
+  }
+  
+  
