@@ -9,7 +9,7 @@ const HeaderMain = () => {
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quis numquam autem. Atque, recusandae commodi itaque quas vel, est neque in quaerat quia inventore assumenda!
                 </p>
-                <Button className="btn btn-primary">HIRE US</Button>
+                <Button className="btn btn-danger">Booking</Button>
             </div>
             <div className="col-md-6 mt-0">
                 <img src={bgImage} alt="" className="img-fluid" />

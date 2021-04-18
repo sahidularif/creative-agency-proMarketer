@@ -9,7 +9,7 @@ const Services = () => {
 
  // Load data form server api
   useEffect(() => {
-    fetch('http://localhost:5500/services')
+    fetch('https://cryptic-escarpment-88718.herokuapp.com/services')
       .then((res) => res.json())
       .then((data) => {
         setServiceInfo(data);        

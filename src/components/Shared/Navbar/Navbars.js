@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Image, Nav, Navbar } from 'react-bootstrap';
 import brand from '../../../images/logo/brand.png';
+import { UserContext } from '../../../App';
+import { Link } from 'react-router-dom';
 const Navbars = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     return (
-        <Navbar collapseOnSelect expand="lg" className="m-0" bg="dark" variant="dark">
+        <Navbar collapseOnSelect expand="lg" className="m-0 justify-content-center align-items-center text-center" bg="dark" style={{color:'white'}}>
             <Navbar.Brand href="#home">
                 <img
                     src={brand}
@@ -15,18 +18,23 @@ const Navbars = () => {
                 />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
+            <Navbar.Collapse id="responsive-navbar-nav" className="">
                 <Nav className="mr-auto">
-                    <Nav.Link href="#features">Home</Nav.Link>
-                    <Nav.Link href="#pricing">About Us</Nav.Link>
-                    <Nav.Link href="#pricing">Projects</Nav.Link>
-                    <Nav.Link href="#pricing">Contact</Nav.Link>
-                    <Nav.Link href="#pricing">Admin</Nav.Link>
+                    <Nav.Link style={{color:'white'}} href="/">Home</Nav.Link>
+                    <Nav.Link style={{color:'white'}} href="#pricing">About Us</Nav.Link>
+                    <Nav.Link style={{color:'white'}} href="#pricing">Projects</Nav.Link>
+                    <Nav.Link style={{color:'white'}} href="#pricing">Contact</Nav.Link>
+                    <Nav.Link style={{color:'white'}} href="/dashboard">Admin</Nav.Link>
                 </Nav>
                 <Nav>
-                    <Nav.Link href="#deets">More deets</Nav.Link>
+                    <Nav.Link href="#deets">
+                        {
+                            loggedInUser.email ? <Link to="/dashboard"><button className="btn btn-light">Dashboard</button></Link> :
+                            ' '
+                        }
+                    </Nav.Link>
                     <Nav.Link to="/login" eventKey={2} href="/login">
-                        <Button>Login</Button>
+                        <Button className="btn-dark">Login</Button>
                     </Nav.Link>
                 </Nav>
             </Navbar.Collapse>

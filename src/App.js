@@ -5,6 +5,7 @@ import AddAdmin from "./components/Dashboard/AddAdmin/AddAdmin";
 import AddFeedback from "./components/Dashboard/AddFeedback/AddFeedback";
 import AddService from "./components/Dashboard/AddService/AddService";
 import ClientOrderCollection from "./components/Dashboard/AdminOrderCollection/ClientOrderCollection";
+import AdminServiceList from "./components/Dashboard/AdminServiceList/AdminServiceList";
 import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
 import PlaceOrder from "./components/Dashboard/PlaceOrder/PlaceOrder";
 import UserBookings from "./components/Dashboard/UserBookingList/UserBookings";
@@ -20,7 +21,7 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
   console.log(isAdmin)
   useEffect(() => {
-    fetch('http://localhost:5500/isAdmin', {
+    fetch('https://cryptic-escarpment-88718.herokuapp.com/isAdmin', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ email: loggedInUser.email }),
@@ -62,6 +63,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute path="/manageServices">
               <AddAdmin />
+            </PrivateRoute>
+            <PrivateRoute path="/orderList">
+              <AdminServiceList />
             </PrivateRoute>
 
             {/* User Tasks */}

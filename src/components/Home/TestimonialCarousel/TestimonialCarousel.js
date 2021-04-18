@@ -2,11 +2,11 @@ import React from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import './TestimonialCarousel.css';
-import carousel_1 from '../../../images/logo/digital-marketing-banner-12x8-revised-01.png';
-import carousel_2 from '../../../images/logo/dm-trends-2020-1.png';
-import carousel_3 from '../../../images/logo/outsourcing-your-digital-marketing.jpg';
-import carousel_4 from '../../../images/logo/dm-trends-2020-1.png';
-import carousel_5 from '../../../images/logo/digital-marketing-banner-12x8-revised-01.png';
+import carousel_1 from '../../../images/logo/project1.jpg';
+import carousel_2 from '../../../images/logo/project2.jpg';
+import carousel_3 from '../../../images/logo/project3.jpg';
+import carousel_4 from '../../../images/logo/project4.png';
+import carousel_5 from '../../../images/logo/project5.jpg';
 
 const responsive = {
     0: { items: 1 },
@@ -34,12 +34,11 @@ const items = [
 
 const TestimonialCarousel = () => {
     return (
-        <section className='carousel-section mt-5' id='portfolio'>
-            <h3 className='text-center' style={{ fontSize: '34px', fontWeight: '600', marginTop: '70px' }}>
-                <span className='text-white'>Here are some of </span>
-                <span style={{ color: '#7AB259' }}>our projects</span>
+        <section className='carousel-section h-auto mb-0' id='portfolio'>
+            <h3 className='text-center mt-3' style={{ fontSize: '34px', fontWeight: '600' }}>               
+                <span style={{ color: 'white' }}>Our Running Projects</span>
             </h3>
-            <AliceCarousel mouseTracking items={items} responsive={responsive} />
+            <AliceCarousel className=' mb-0' mouseTracking items={items} responsive={responsive} />
         </section>
     );
 };

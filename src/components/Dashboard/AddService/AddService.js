@@ -26,7 +26,7 @@ const AddService = () => {
     formData.append('description', serviceInfo.description);
     formData.append('price', serviceInfo.price);
 
-    fetch('http://localhost:5500/addService', {
+    fetch('https://cryptic-escarpment-88718.herokuapp.com/addService', {
       method: 'POST',
       body: formData,
     })
@@ -54,6 +54,7 @@ const AddService = () => {
           <Sidebar />
         </div>
         <div className="col-md-10 border">
+        <strong>Add Service</strong>
           <div className='bg-white rounded my-4 p-4 mx-4'>
             <form onSubmit={handleSubmit(onSubmit)} className='event-form'>
               <div className='row'>

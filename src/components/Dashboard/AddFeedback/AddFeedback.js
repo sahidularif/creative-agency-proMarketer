@@ -1,43 +1,30 @@
 // import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { UserContext } from '../../../App';
 import Sidebar from '../Sidebar/Sidebar';
 import Topbar from '../Topbar/Topbar';
-// import { useHistory } from 'react-router-dom';
-// import { UserContext } from '../../../App';
-// import { loggedInInfo } from '../../Login/loginManager';
-// ========================================================
+
 
 const AddFeedback = () => {
-    // Context from app.js
-    // const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
-    // Logged in user info from session storage:
-    // const loggedInUserInfo = loggedInInfo();
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
-    // handle redirected to home
-    // let history = useHistory();
-    // function handleEventUpdate() {
-    //     history.push('/');
-    // }
 
     // handle Add Review:
     const onSubmit = (data) => {
-        // const newReview = { ...data };
-        // newReview.img = loggedInUser.email
-        //     ? loggedInUser.photo
-        //     : loggedInUserInfo.picture;
+        const newFeedback = { ...data };
+        newFeedback.email = loggedInUser.email;
+        newFeedback.image = loggedInUser.email
+          && loggedInUser.picture;         
 
-        // fetch('https://creative-agency-react.herokuapp.com/addReview', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(newReview),
-        // })
-        //     .then((res) => res.json())
-        //     .then((data) => {
-        //         if (data) {
-        //             handleEventUpdate();
-        //         }
-        //     });
+        fetch('https://cryptic-escarpment-88718.herokuapp.com/addReview', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newFeedback),
+        })
+            .then((res) => res.json())
+            .then((data) => console.log(data));
     };
 
     // React hook form for validation and error message
@@ -47,12 +34,12 @@ const AddFeedback = () => {
         <section>
             <div className="row d-block">
                 <div className="col-md-12">
-                    <Topbar/>
+                    <Topbar />
                 </div>
             </div>
             <div className="row">
                 <div className="col-md-2">
-                    <Sidebar/>
+                    <Sidebar />
                 </div>
                 <div className="col-md-10 border">
                     <div className='rounded my-4 mx-4'>
@@ -98,7 +85,7 @@ const AddFeedback = () => {
                                     </div>
 
                                     <div className='text-left'>
-                                        <button type='submit' className='btn btn-brand'>
+                                        <button type='submit' className='btn btn-danger'>
                                             Submit
                                         </button>
                                     </div>
@@ -106,7 +93,7 @@ const AddFeedback = () => {
                             </div>
                         </form>
 
-                        {/* <button className="btn btn-warning" onClick={onSubmit}>Add Bulk</button> */}
+
                     </div>
                 </div>
             </div>

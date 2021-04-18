@@ -111,8 +111,8 @@ const SplitForm = () => {
           }}
         />
       </label>
-      <button type="submit" disabled={!stripe}>
-        Pay
+      <button className="btn btn-danger" type="submit" disabled={!stripe}>
+        Proceed Payment
       </button>
     </form>
   );

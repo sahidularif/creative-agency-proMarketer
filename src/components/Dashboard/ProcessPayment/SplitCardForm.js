@@ -113,8 +113,8 @@ const SplitCardForm = () => {
         />
       </label>
       <br/>
-      <button type="submit" disabled={!stripe}>
-        Pay
+      <button className="btn bt-danger" type="submit" disabled={!stripe}>
+        Proceed Payment
       </button>
     </form>
   );

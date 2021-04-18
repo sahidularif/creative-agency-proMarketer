@@ -8,7 +8,7 @@ const ClientOrderCollection = () => {
     const [orderCollection, setOrderCollection] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5500/orderCollection')
+        fetch('https://cryptic-escarpment-88718.herokuapp.com/orderCollection')
           .then((res) => res.json())
           .then((data) => {
             setOrderCollection(data);

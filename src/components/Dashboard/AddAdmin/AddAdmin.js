@@ -18,7 +18,7 @@ const AddAdmin = () => {
     const newAdmin = { ...data };
     console.log('new ad', newAdmin);
 
-    fetch('http://localhost:5500/addAdmin', {
+    fetch('https://cryptic-escarpment-88718.herokuapp.com/addAdmin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newAdmin),

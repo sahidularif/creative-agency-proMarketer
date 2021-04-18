@@ -8,18 +8,16 @@ const UserBookingList = (props) => {
   return (
     <section>
       <div className="row">
-        <div className="col-md-10 border">
+        <div className="col-md-12">
           <div className='col-md-6 rounded mb-3'>
-            <div className='card h-100'>
+            <div className='card w-100'>
               <div className='card-body p-4'>
                 <div className='row'>
                     <div className='col-md-12 d-flex justify-content-between'>
                         <div className='mb-3 mb-md-0'>
 
-                          {image ? <img style={{ height: '60px' }} src={`data:image/png;base64,${image.img}`} alt="" />
-                            :
-                            <img className='img-fluid w-25' src={img} alt={title} />
-
+                          {image && <img style={{ height: '60px' }} src={`data:image/png;base64,${image.img}`} alt="" />
+                           
                           }
 
                         </div>

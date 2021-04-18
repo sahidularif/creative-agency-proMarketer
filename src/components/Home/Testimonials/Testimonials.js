@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Testimonials.css';
 import wilson from '../../../images/logo/aliza.png';
 import ema from '../../../images/logo/aliza.png';
@@ -6,29 +6,16 @@ import aliza from '../../../images/logo/aliza.png';
 import TestimonalPost from './TestimonalPost';
 
 const Testimonials = () => {
-    const blogData = [
-        {
-            title: 'Check at least a doctor in a year for your teeth',
-            description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea, placeat totam laborum maiores, esse assumenda porro error natus sit ipsam.        ',
-            author: 'Dr. Cudi',
-            authorImg: wilson,
-            date: '23 April 2019'
-        },
-        {
-            title: 'Two time brush in a day can keep you healthy',
-            description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea, placeat totam laborum maiores, esse assumenda porro error natus sit ipsam.        ',
-            author: 'Dr. Sinthia',
-            authorImg: ema,
-            date: '23 April 2019'
-        },
-        {
-            title: 'The tooth cancer is taking a challenge',
-            description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea, placeat totam laborum maiores, esse assumenda porro error natus sit ipsam.        ',
-            author: 'Dr. Cudi',
-            authorImg: aliza,
-            date: '23 April 2019'
-        },
-    ]
+    const [feedbacks, setFeedbacks] = useState([]);
+
+    // Load data form server api
+     useEffect(() => {
+       fetch('https://cryptic-escarpment-88718.herokuapp.com/feedback')
+         .then((res) => res.json())
+         .then((data) => {
+            setFeedbacks(data);        
+         });
+     }, []);
     return (
         <section className="blogs my-5">
            <div className="container">
@@ -37,8 +24,9 @@ const Testimonials = () => {
                    
                </div>
                <div className="card-deck mt-5">
+                   
                     {
-                        blogData.map(post => <TestimonalPost post={post} key={post.title}/>)
+                        feedbacks.map(feedback => <TestimonalPost feedback={feedback} key={feedback.title}/>)
                     }
                </div>
            </div>

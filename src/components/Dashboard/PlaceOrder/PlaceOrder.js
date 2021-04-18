@@ -18,7 +18,7 @@ const PlaceOrder = () => {
 
   // Find user clicked service from Api.
   useEffect(() => {
-    fetch(`http://localhost:5500/services/${_id}`)
+    fetch(`https://cryptic-escarpment-88718.herokuapp.com/services/${_id}`)
       .then((res) => res.json())
       .then((data) => setServiceData(data));
   }, [_id]);
@@ -39,7 +39,7 @@ const PlaceOrder = () => {
     newService.orderTime = new Date();
     newService.status = 'Pending';
 
-    fetch('http://localhost:5500/placeOrder', {
+    fetch('https://cryptic-escarpment-88718.herokuapp.com/placeOrder', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -140,8 +140,8 @@ const PlaceOrder = () => {
                     </div>
                   </div>
                   <div className='text-left'>
-                    <button type='submit' className='btn btn-danger'>
-                      Pay
+                    <button type='submit' className='btn btn-secondary border'>
+                      Save Data
                     </button>
                   </div>
 
@@ -151,9 +151,9 @@ const PlaceOrder = () => {
             </form>
           </div>
           {/* Stripe Payment */}
-          <div className="row">
+          <div className="row mb-5">
             <div className="col-md-6">
-              <h5>Card information:</h5>
+              <h5 className="mb-3">Card information:</h5>
               <ProcessPayment handlePayment={handlePaymentSuccess}></ProcessPayment>
             </div>
           </div>

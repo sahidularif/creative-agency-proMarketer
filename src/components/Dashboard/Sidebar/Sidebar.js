@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Sidebar.css';
+// import firebase from "firebase/app";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faShoppingCart,
@@ -19,6 +20,13 @@ const Sidebar = () => {
   const [isAdmin, setIsAdmin] = useContext(AdminContext);
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
+  // const handleSignOut = () => {
+  //   firebase.auth().signOut().then(() => {
+  //     // Sign-out successful.
+  //   }).catch((error) => {
+  //     // An error happened.
+  //   });
+  // }
   return (
     <div className='sidebar d-flex flex-column justify-content-between py-5 px-4'>
       <ul className='list-unstyled'>
@@ -26,8 +34,8 @@ const Sidebar = () => {
         {isAdmin ? (
           <>
             <li>
-              <Link to='/bookingList' className='text-dark'>
-                <FontAwesomeIcon icon={faHdd} /> <span>Client Order List</span>
+              <Link to='/orderList' className='text-dark'>
+                <FontAwesomeIcon icon={faHdd} /> <span>Order List</span>
               </Link>
             </li>
             <li>
@@ -43,6 +51,11 @@ const Sidebar = () => {
             <li>
               <Link to='/addAdmin' className='text-dark'>
                 <FontAwesomeIcon icon={faTasks} /> <span>Manage service</span>
+              </Link>
+            </li>
+            <li className="mt-5">
+              <Link to='/addAdmin' className='text-dark'>
+                <FontAwesomeIcon icon={faSignOutAlt} /> <span>Sign out</span>
               </Link>
             </li>
           </>
@@ -61,8 +74,13 @@ const Sidebar = () => {
             </li>
 
             <li>
-              <Link to='/add-feedback' className='text-dark'>
+              <Link to='/addFeedback' className='text-dark'>
                 <FontAwesomeIcon icon={faCommentAlt} /> <span>Review</span>
+              </Link>
+            </li>
+            <li className="mt-5">
+              <Link to='/' className='text-dark'>
+                <FontAwesomeIcon icon={faSignOutAlt} /> <span>Sign out</span>
               </Link>
             </li>
           </>
