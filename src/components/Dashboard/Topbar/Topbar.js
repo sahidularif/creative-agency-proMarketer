@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar } from 'react-bootstrap';
-import brand from '../../../images/logo/brand.png';
+import brand from '../../../images/logo/brand4.png';
 import { AdminContext, UserContext } from '../../../App';
 
 const Topbar = () => {
@@ -10,11 +10,11 @@ const Topbar = () => {
     return (
 
 
-        <Navbar bg="danger" style={{color:'white'}} >
-            <Navbar.Brand href="#home">
+        <Navbar style={{color:'white', backgroundColor:'powderblue'}} className="border" >
+            <Navbar.Brand href="/">
                 <img
                     src={brand}
-                    width="90"
+                    width="150"
                     height="50"
                     className="d-inline-block align-top"
                     alt="Brand logo"

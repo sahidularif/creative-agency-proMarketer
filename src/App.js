@@ -12,7 +12,8 @@ import UserBookings from "./components/Dashboard/UserBookingList/UserBookings";
 import Home from "./components/Home/Home/Home";
 import Login from "./components/Login/Login/Login";
 import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
-
+import './App.css';
+import ManageService from "./components/Dashboard/ManageService/ManageService";
 export const UserContext = createContext();
 export const AdminContext = createContext();
 
@@ -30,65 +31,69 @@ function App() {
       .then((data) => setIsAdmin(data));
   }, [loggedInUser.email]);
 
+  const bodyStyle = {
+    margin:'0px'
+  }
 
   return (
-    <AdminContext.Provider value={[isAdmin, setIsAdmin]}>
-      <UserContext.Provider value={[loggedInUser, SetLoggedInUser]}>
-        <Router>
-          <Switch>
-            <Route exact path="/">
-              <Home></Home>
-            </Route>
+    <div className="body">
+      <AdminContext.Provider value={[isAdmin, setIsAdmin]}>
+        <UserContext.Provider value={[loggedInUser, SetLoggedInUser]}>
+          <Router>
+            <Switch>
+              <Route exact path="/">
+                <Home></Home>
+              </Route>
+              <Route exact path="/login">
+                <Login></Login>
+              </Route>
 
-            <Route exact path="/login">
-              <Login></Login>
-            </Route>
+              {/* Admin Tasks */}
 
-            {/* Admin Tasks */}
+              <PrivateRoute path="/dashboard">
+                <Dashboard />
+              </PrivateRoute>
+              <PrivateRoute path="/bookingList">
+                <UserBookings />
+              </PrivateRoute>
+              <PrivateRoute path="/addService">
+                <AddService />
+              </PrivateRoute>
+              <PrivateRoute path="/clientOrderList">
+                <ClientOrderCollection />
+              </PrivateRoute>
+              <PrivateRoute path="/addAdmin">
+                <AddAdmin />
+              </PrivateRoute>
+              <PrivateRoute path="/manageService">
+                <ManageService />
+              </PrivateRoute>
+              <PrivateRoute path="/orderList">
+                <AdminServiceList />
+              </PrivateRoute>
 
-            <PrivateRoute path="/dashboard">
-              <Dashboard />
-            </PrivateRoute>
-            <PrivateRoute path="/bookingList">
-              <UserBookings />
-            </PrivateRoute>
-            <PrivateRoute path="/addService">
-              <AddService />
-            </PrivateRoute>
-            <PrivateRoute path="/clientOrderList">
-              <ClientOrderCollection />
-            </PrivateRoute>
-            <PrivateRoute path="/addAdmin">
-              <AddAdmin />
-            </PrivateRoute>
-            <PrivateRoute path="/manageServices">
-              <AddAdmin />
-            </PrivateRoute>
-            <PrivateRoute path="/orderList">
-              <AdminServiceList />
-            </PrivateRoute>
+              {/* User Tasks */}
 
-            {/* User Tasks */}
-
-            <PrivateRoute path="/dashboard">
-              <Dashboard />
-            </PrivateRoute>
-            <PrivateRoute path="/placeOrder">
-              <PlaceOrder />
-            </PrivateRoute>
-            <PrivateRoute path="/addFeedback">
-              <AddFeedback />
-            </PrivateRoute>
-            <PrivateRoute path="/bookingList">
-              <UserBookings />
-            </PrivateRoute>
-            <PrivateRoute path="/service/:_id">
-              <PlaceOrder />
-            </PrivateRoute>
-          </Switch>
-        </Router>
-      </UserContext.Provider>
-    </AdminContext.Provider >
+              <PrivateRoute path="/dashboard">
+                <Dashboard />
+              </PrivateRoute>
+              <PrivateRoute path="/placeOrder">
+                <PlaceOrder />
+              </PrivateRoute>
+              <PrivateRoute path="/addFeedback">
+                <AddFeedback />
+              </PrivateRoute>
+              <PrivateRoute path="/bookingList">
+                <UserBookings />
+              </PrivateRoute>
+              <PrivateRoute path="/service/:_id">
+                <PlaceOrder />
+              </PrivateRoute>
+            </Switch>
+          </Router>
+        </UserContext.Provider>
+      </AdminContext.Provider >
+    </div>
 
   );
 }

@@ -20,13 +20,10 @@ const Sidebar = () => {
   const [isAdmin, setIsAdmin] = useContext(AdminContext);
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
-  // const handleSignOut = () => {
-  //   firebase.auth().signOut().then(() => {
-  //     // Sign-out successful.
-  //   }).catch((error) => {
-  //     // An error happened.
-  //   });
-  // }
+  const signOut = () => {
+    setLoggedInUser({});
+  };
+  
   return (
     <div className='sidebar d-flex flex-column justify-content-between py-5 px-4'>
       <ul className='list-unstyled'>
@@ -49,13 +46,13 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link to='/addAdmin' className='text-dark'>
+              <Link to='/manageService' className='text-dark'>
                 <FontAwesomeIcon icon={faTasks} /> <span>Manage service</span>
               </Link>
             </li>
             <li className="mt-5">
               <Link to='/addAdmin' className='text-dark'>
-                <FontAwesomeIcon icon={faSignOutAlt} /> <span>Sign out</span>
+                <FontAwesomeIcon icon={faSignOutAlt} /> <span onClick={signOut}>Sign out</span>
               </Link>
             </li>
           </>
@@ -80,7 +77,7 @@ const Sidebar = () => {
             </li>
             <li className="mt-5">
               <Link to='/' className='text-dark'>
-                <FontAwesomeIcon icon={faSignOutAlt} /> <span>Sign out</span>
+                <FontAwesomeIcon icon={faSignOutAlt} /> <span onClick={signOut}>Sign out</span>
               </Link>
             </li>
           </>

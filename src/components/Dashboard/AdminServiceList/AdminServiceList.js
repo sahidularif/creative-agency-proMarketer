@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import Topbar from '../Topbar/Topbar';
+import stripe from '../../../images/logo/stripe.png';
 // ==============================================================================
 
 const AdminServiceList = () => {
@@ -15,7 +16,7 @@ const AdminServiceList = () => {
         setServiceList(data);
       });
   }, [serviceList]);
-  
+
   const updateStatus = (status) => {
     const data = { _id: selectService._id, status };
     console.log(selectService, 'status', status);
@@ -73,7 +74,7 @@ const AdminServiceList = () => {
                       Service
               </th>
                     <th className='text-secondary' scope='col'>
-                      Project Details
+                      Pay With
               </th>
                     <th className='text-secondary' scope='col'>
                       Status
@@ -87,9 +88,10 @@ const AdminServiceList = () => {
                       <td>{service.name}</td>
                       <td>{service.email}</td>
                       <td>{service.title}</td>
-                      <td>{service.description}</td>
+                      <td><img src={stripe} className=" img-fluid" width="40px" alt="" /></td>
 
                       <td className='text-center'>
+
                         <select
                           onClick={() => setSelectService(service)}
                           onChange={(e) => updateStatus(e.target.value)}

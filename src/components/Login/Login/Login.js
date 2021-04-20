@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Login.css';
-import logo from '../../../images/logo/brand.png'
+import logo from '../../../images/logo/brand4.png'
 import google from '../../../images/google.png';
 import firebase from "firebase/app";
 import "firebase/auth";

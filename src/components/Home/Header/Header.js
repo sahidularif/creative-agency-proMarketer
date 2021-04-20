@@ -6,8 +6,8 @@ import Navbars from '../../Shared/Navbar/Navbars';
 const Header = () => {
     return (
         <div>
-            <Navbars />
-            <HeaderMain/>           
+              <Navbars />
+            <HeaderMain/> 
         </div>
     );
 };

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Image } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const TestimonalPost = (props) => {
     const { designation, name, description, image} = props.feedback;
@@ -13,8 +15,16 @@ const TestimonalPost = (props) => {
                 </div>
             </div>
             <div className="card-body shadow">                
-                <p className="card-text text-secondary mt-2">{description}</p>
+                <p className="card-text text-secondary">{description}</p>
+                <span className="text-warning">
+                <FontAwesomeIcon className="icon active-icon" icon={faStar} />
+                <FontAwesomeIcon className="icon active-icon" icon={faStar} />
+                <FontAwesomeIcon className="icon active-icon" icon={faStar} />
+                <FontAwesomeIcon className="icon active-icon" icon={faStar} />
+                <FontAwesomeIcon className="icon active-icon" icon={faStar} />
+                </span>
             </div>
+
 
         </div>
     );

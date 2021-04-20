@@ -69,7 +69,7 @@ const PlaceOrder = () => {
           <Sidebar />
         </div>
         <div className="col-md-10 border">
-          <div className='rounded my-4 mx-4'>
+          <div className='rounded my-4 mx-4' style={{display: orderData ? 'none': 'block'}}>
             <form onSubmit={handleSubmit(onSubmit)} className='client-form'>
               <div className='row'>
                 <div className='col-md-6 p-4'>
@@ -141,7 +141,7 @@ const PlaceOrder = () => {
                   </div>
                   <div className='text-left'>
                     <button type='submit' className='btn btn-secondary border'>
-                      Save Data
+                      Submit
                     </button>
                   </div>
 
@@ -151,8 +151,9 @@ const PlaceOrder = () => {
             </form>
           </div>
           {/* Stripe Payment */}
-          <div className="row mb-5">
+          <div className="row mb-5" style={{display: orderData ? 'block': 'none'}}>
             <div className="col-md-6">
+              {/* Stripe dummy card: 4242-4242-4242-4242 - 10/51 - 125 - 45879 */}
               <h5 className="mb-3">Card information:</h5>
               <ProcessPayment handlePayment={handlePaymentSuccess}></ProcessPayment>
             </div>

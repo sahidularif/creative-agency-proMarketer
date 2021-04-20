@@ -6,7 +6,7 @@
   }
   
 
-  .carousel-section {
+  .main-service {
     background-image: url(../../../images/bg-2.jpeg);
     background-size: cover;
     position: relative;
@@ -14,7 +14,7 @@
     z-index: 1;
    
   }
-  .carousel-section::before{
+  .main-service::before{
     position: absolute;
     content: "";
     top:0;
@@ -24,15 +24,25 @@
     opacity: .9;
     z-index: -1;
 }
-  .carousel-section {
+  .main-service {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     justify-content: center;
-    height: 600px;
+    height: 100%;
     
   }
-  
+  .main-service h5{
+    font-family: 'Roboto', sans-serif;
+    color: burlywood;
+    margin-top: 20px;
+    
+  }
+  .main-service p{
+    font-family:  sans-serif;
+    color: gray;
+    margin-top: 20px;
+  }
   .item {
     height: 400px;
     padding: 2px;

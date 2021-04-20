@@ -4,14 +4,14 @@ import Footer from '../../Shared/Footer/Footer';
 import Header from '../Header/Header';
 import Testimonials from '../Testimonials/Testimonials';
 import Services from '../Services/Services';
-import TestimonialCarousel from '../TestimonialCarousel/TestimonialCarousel';
+import MainServices from '../MainServices/MainServices';
 
 
 const Home = () => {
     return (
        <>
         <Header/>
-        <TestimonialCarousel/>
+        <MainServices/>
         <Services/>      
         <Testimonials/>        
         <Contact/>

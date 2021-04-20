@@ -1,5 +1,5 @@
 .hero-section{
-    height: 700px;
+    height: 100%;
     margin: 0 auto;
     background-image: url(../../../images/pedro-henrique-santos-4IoS45J9pmk-unsplash.jpg);
     -moz-background-size: cover;
@@ -8,7 +8,7 @@
     min-height: 100%;
     min-width: 1024px;
     width: 100%;
-    height: auto;
+  
     top: 0;
     left: 0;
     background-color: #252D2F;
