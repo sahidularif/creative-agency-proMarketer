@@ -12,35 +12,29 @@ const ManageService = () => {
     const [selectService, setSelectService] = useState({});
 
     useEffect(() => {
-        fetch('https://cryptic-escarpment-88718.herokuapp.com/orderList')
+        fetch('http://localhost:5500/services')
             .then((res) => res.json())
             .then((data) => {
                 setServiceList(data);
             });
     }, [serviceList]);
 
-    // const updateStatus = (status) => {
-    //     const data = { _id: selectService._id, status };
-    //     console.log(selectService, 'status', status);
+    const deleteItem = (_id) => {
 
-    //     fetch(
-    //         `https://cryptic-escarpment-88718.herokuapp.com/updateOrderStatus/${data._id}`,
-    //         {
-    //             method: 'PATCH',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify(data),
-    //         }
-    //     )
-    //         .then((res) => res.json())
-    //         .then((data) => console.log(data))
-    //         .then((result) => {
-    //             if (result) {
-    //                 console.log(result);
-    //             }
-    //         });
-    // };
+        fetch(
+            `http://localhost:5500/deleteService/${_id}`,
+            {
+                method: 'DELETE'
+            }
+        )
+            .then((res) => res.json())
+            .then((data) => console.log(data))
+            .then((result) => {
+                if (result) {
+                    console.log(result);
+                }
+            });
+    };
 
 
     let serialNo = 1;
@@ -65,37 +59,31 @@ const ManageService = () => {
                                     <tr>
                                         <th className='text-secondary text-left' scope='col'>
                                             #
-              </th>
+                                        </th>
                                         <th className='text-secondary' scope='col'>
-                                            Name
-              </th>
+                                            Title
+                                        </th>
                                         <th className='text-secondary' scope='col'>
-                                            Email ID
-              </th>
+                                            Description
+                                        </th>
                                         <th className='text-secondary' scope='col'>
-                                            Service
-              </th>
+                                            Price
+                                        </th>
+
                                         <th className='text-secondary' scope='col'>
-                                            Pay With
-              </th>
-                                        <th className='text-secondary' scope='col'>
-                                            Status
-              </th>
+                                            Action
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {serviceList.map((service) => (
                                         <tr key={service._id}>
                                             <td>{serialNo++}</td>
-                                            <td>{service.name}</td>
-                                            <td>{service.email}</td>
                                             <td>{service.title}</td>
-                                            <td>
-                                                <img src={stripe} className=" img-fluid" width="40px" alt="" />
-                                            </td>
-
+                                            <td>{service.description}</td>
+                                            <td>{service.price}</td>
                                             <td className='text-center'>
-                                            <FontAwesomeIcon className="icon active-icon" icon={faTrash} />
+                                                <FontAwesomeIcon className="icon active-icon" onClick={() => { deleteItem(service._id) }} icon={faTrash} />
                                             </td>
                                         </tr>
                                     ))}
