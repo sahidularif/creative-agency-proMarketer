@@ -14,6 +14,10 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
   } from './LoginManager';
+  import firebase from "firebase/app";
+
+  //=====================================================================================
+
 const Login = () => {
 
  // Initialize Firebase
@@ -33,13 +37,14 @@ const [error, setError] = useState("")
 
 // Context from app.js
  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-const [display ,setDisplay] = useState(false)
-// Redirecting to home/ taskRegistration Component if signed In successfully
  const history = useHistory();
  const location = useLocation();
 
  const { from } = location.state || {
    from: { pathname: '/' },
+ };
+ const { login } =  {
+    login: { pathname: '/login' },
  };
 
  // Google Sign In
@@ -91,23 +96,35 @@ const [display ,setDisplay] = useState(false)
 
 // When form submitted:
  const handleUserSubmit = () => {
+     console.log('ok')
    if(newUser && user.email && user.password){
+       console.log('dukche')
      createUserWithEmailAndPassword(user.name, user.email, user.password)
      .then(res => {
-       handleResponse(res, true);
-       console.log(res)
+        history.replace(login);
+        SetNewUSer(false)
      })
    }
-
+console.log('ko')
    if(!newUser && user.email && user.password){
+       console.log('huran lok');
      signInWithEmailAndPassword(user.email, user.password)
      .then(res => {
        handleResponse(res, true);
-       console.log(res)
      })
    }
    
  }
+//  const forgottPassword = () => {
+//     var auth = firebase.auth();
+//     var emailAddress = "user@example.com";
+    
+//     auth.sendPasswordResetEmail(emailAddress).then(function() {
+//       // Email sent.
+//     }).catch(function(error) {
+//       // An error happened.
+//     });
+//  }
 
  // React hook form for extra form validation and error message
  const { register, handleSubmit, watch, errors } = useForm();
@@ -128,7 +145,7 @@ const [display ,setDisplay] = useState(false)
 
                 <div className='card login-area rounded'>
                     {
-                        !display ?
+                        !newUser ?
                             (
                                 <div className="card-body d-flex justify-content-center align-items-center flex-column">
 
@@ -136,30 +153,31 @@ const [display ,setDisplay] = useState(false)
                                     <Form style={{ minWidth: '100%', maxWidth: '100%' }} onSubmit={handleSubmit(handleUserSubmit)}>
                                         <Form.Group>
                                             <Form.Label>Email</Form.Label>
-                                            <Form.Control name="email" type='text' ref={register({ required: true })} />
+                                            <Form.Control name="email" type='text' onBlur={handleBlur} ref={register({ required: true })} />
                                         </Form.Group>
                                         {errors.email && (
                                             <span className='error'>Email is required</span>
                                         )}
                                         <Form.Group>
                                             <Form.Label>Password</Form.Label>
-                                            <Form.Control name="password" type='password' ref={register({ required: true })} />
+                                            <Form.Control name="password" type='password' onBlur={handleBlur} ref={register({ required: true })} />
                                         </Form.Group>
                                         {errors.confirmPassword && (
                   <span className='error'>Password don't match</span>
                 )}
                                         <div className="align-items-center text-center justify-content-center">
-                                            <Button className=" rounded-pill" type='submit'>Create Account</Button>
+                                            <Button className=" rounded-pill" type='submit'>Sign in</Button>
                                         </div>
                                     </Form>
                                     <div className='form-group text-center' id='formForget'>
                                         <span>Don't have an account?</span>{' '}
                                         <span
                                             style={{ cursor: 'pointer', color: '#3F90FC' }}
-                                            onClick={() => setDisplay('true')}
+                                            onClick={() => SetNewUSer(true)}
                                         >
                                             Sign up
                                         </span>
+                                        <p style={{cursot:'pointer'}}>Forgot password?</p>
                                     </div>
                                 </div>
                             )
@@ -211,7 +229,7 @@ const [display ,setDisplay] = useState(false)
                                         <span>Already registered?</span>{' '}
                                         <span
                                             style={{ cursor: 'pointer', color: '#3F90FC' }}
-                                            onClick={() => setDisplay(false)}
+                                            onClick={() => SetNewUSer(false)}
                                         >
                                             Sign in
                                         </span>

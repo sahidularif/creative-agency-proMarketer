@@ -28,7 +28,8 @@ const Topbar = () => {
             </Navbar.Collapse>
             <Navbar.Collapse className="justify-content-end">
                 <Navbar.Text style={{color:'white'}}>
-                    {isAdmin?<span>Sign In As admin:</span>:' Sign In As User'} <a href="#login" style={{color:'white', fontWeight:'bold'}}>{loggedInUser.name}</a>
+                    {isAdmin?<span>Sign In As admin: </span>:' Sign In As User'} 
+                    <a href="#login" style={{color:'white', fontWeight:'bold'}}> {loggedInUser.name}</a>
                 </Navbar.Text>
             </Navbar.Collapse>
         </Navbar>

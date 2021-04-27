@@ -12,7 +12,7 @@ const ManageService = () => {
     const [selectService, setSelectService] = useState({});
 
     useEffect(() => {
-        fetch('http://localhost:5500/services')
+        fetch('https://cryptic-escarpment-88718.herokuapp.com/services')
             .then((res) => res.json())
             .then((data) => {
                 setServiceList(data);
@@ -22,7 +22,7 @@ const ManageService = () => {
     const deleteItem = (_id) => {
 
         fetch(
-            `http://localhost:5500/deleteService/${_id}`,
+            `https://cryptic-escarpment-88718.herokuapp.com/deleteService/${_id}`,
             {
                 method: 'DELETE'
             }
@@ -54,10 +54,10 @@ const ManageService = () => {
                     <strong>Order List</strong>
                     <div className='rounded bg-white '>
                         <div className='table-responsive'>
-                            <table className='table table-borderless table-hover bg-white rounded my-4'>
-                                <thead className='thead-light'>
+                            <table className='table table-border table-hover bg-white rounded my-4'>
+                                <thead className='thead-light text-center'>
                                     <tr>
-                                        <th className='text-secondary text-left' scope='col'>
+                                        <th className='text-secondary' scope='col'>
                                             #
                                         </th>
                                         <th className='text-secondary' scope='col'>
@@ -82,7 +82,7 @@ const ManageService = () => {
                                             <td>{service.title}</td>
                                             <td>{service.description}</td>
                                             <td>{service.price}</td>
-                                            <td className='text-center'>
+                                            <td className='text-center text-danger'>
                                                 <FontAwesomeIcon className="icon active-icon" onClick={() => { deleteItem(service._id) }} icon={faTrash} />
                                             </td>
                                         </tr>

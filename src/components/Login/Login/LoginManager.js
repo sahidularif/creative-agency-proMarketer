@@ -1,6 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
-import firebaseConfig from './firebase.config';
+import firebaseConfig from "./firebase.config";
 
 export const initializeLoginFramework = () => {
   if(firebase.apps.length === 0) {
@@ -52,9 +52,11 @@ export const createUserWithEmailAndPassword = (name, email, password) => {
     newUserInfo.error = '';
     newUserInfo.success = true;
     updateUserName(name);
+    verifyEmail();
     return newUserInfo;
   })
   .catch( error => {
+    console.log('dukeno killai');
     const newUserInfo = {};
     newUserInfo.error = error.message;
     newUserInfo.success = false;
@@ -67,17 +69,15 @@ export const createUserWithEmailAndPassword = (name, email, password) => {
 export const signInWithEmailAndPassword = (email, password) =>{
   return firebase.auth().signInWithEmailAndPassword(email, password)
   .then(res => {
-    const newUserInfo = res.user;
-    newUserInfo.error = '';
-    newUserInfo.success = true;
-    return newUserInfo;
+    const { displayName, email } = res.user;
+      const signInUser = { name: displayName, email: email, success: true, error: '' };
+    return signInUser;
   })
   .catch(function(error) {
-    const newUserInfo = {};
-    newUserInfo.error = error.message;
-    newUserInfo.success = false;
-    console.log(newUserInfo);
-    return newUserInfo;
+    const signInUser = {};
+    signInUser.error = error.message;
+    signInUser.success = false;
+    return signInUser;
   });
 }
 
@@ -95,15 +95,15 @@ const updateUserName = name =>{
   });
 }
 
-// const verifyEmail = () => {
-//   const userVerify = firebase.auth().currentUser;
-//   userVerify
-//     .sendEmailVerification()
-//     .then(function () {
-//       // Email sent.
-//     })
-//     .catch(function (error) {
-//       console.log(error);
-//     });
-// };
+const verifyEmail = () => {
+  const userVerify = firebase.auth().currentUser;
+  userVerify
+    .sendEmailVerification()
+    .then(function () {
+      // Email sent.
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
 

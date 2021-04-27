@@ -59,7 +59,7 @@ const AdminServiceList = () => {
           <div className='rounded bg-white '>
             <div className='table-responsive'>
               <table className='table table-borderless table-hover bg-white rounded my-4'>
-                <thead className='thead-light'>
+                <thead className='thead-light text-center'>
                   <tr>
                     <th className='text-secondary text-left' scope='col'>
                       #

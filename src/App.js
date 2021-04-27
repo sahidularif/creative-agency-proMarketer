@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AddAdmin from "./components/Dashboard/AddAdmin/AddAdmin";
 import AddFeedback from "./components/Dashboard/AddFeedback/AddFeedback";
 import AddService from "./components/Dashboard/AddService/AddService";
-import ClientOrderCollection from "./components/Dashboard/AdminOrderCollection/ClientOrderCollection";
 import AdminServiceList from "./components/Dashboard/AdminServiceList/AdminServiceList";
 import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
 import PlaceOrder from "./components/Dashboard/PlaceOrder/PlaceOrder";
@@ -58,9 +57,6 @@ function App() {
               </PrivateRoute>
               <PrivateRoute path="/addService">
                 <AddService />
-              </PrivateRoute>
-              <PrivateRoute path="/clientOrderList">
-                <ClientOrderCollection />
               </PrivateRoute>
               <PrivateRoute path="/addAdmin">
                 <AddAdmin />
